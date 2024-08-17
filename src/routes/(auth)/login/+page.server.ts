@@ -14,7 +14,7 @@ export const load: PageServerLoad = async () => {
 };
 
 export const actions: Actions = {
-    login: async ({request, cookies}) => {
+    login: async ({request, cookies, url, fetch}) => {
         const formData = await request.formData()
         const username = formData.get("username")
         const password = formData.get("password")
@@ -29,19 +29,22 @@ export const actions: Actions = {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(form),
+            body: JSON.stringify(form)
         })
 
         if (!response.ok) {
             console.error("Error submitting form", response.statusText)
         }
 
-        const {access_token, refresh_token} = await response.json()
-        userStore.update((state) => ({ ...state, loggedIn: true, accessToken: access_token, refreshToken: refresh_token}))
-
-        await cookies.set("loggedIn", "true", {secure: NODE_ENV === "production", path: "/"})
-        await cookies.set("accessToken", access_token, {secure: NODE_ENV === "production", path: "/"})
-        await cookies.set("refreshToken", access_token, {secure: NODE_ENV === "production", path: "/"})
-        redirect(300, "/")
+        else {
+            const {access_token, refresh_token} = await response.json()
+            userStore.update((state) => ({ ...state, loggedIn: true, accessToken: access_token, refreshToken: refresh_token}))
+    
+            await cookies.set("loggedIn", "true", {secure: NODE_ENV === "production", path: "/"})
+            await cookies.set("accessToken", access_token, {secure: NODE_ENV === "production", path: "/"})
+            await cookies.set("refreshToken", access_token, {secure: NODE_ENV === "production", path: "/"})
+            redirect(300, url.searchParams.get("next") || "/")
+        }
     }
+
 }

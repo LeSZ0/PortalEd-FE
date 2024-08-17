@@ -60,3 +60,15 @@ export const flyAndScale = (
 		easing: cubicOut
 	};
 };
+
+export const verifyToken = async (token: string, auth_endpoints: string): Promise<boolean> => {
+    const validToken = fetch(`${auth_endpoints}/token/verify?token=${token}`, {
+        method: "POST"
+    })
+
+    if ((await validToken).status === 200) {
+        return await true
+    }
+
+    return await false
+};
