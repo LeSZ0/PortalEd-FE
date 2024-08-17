@@ -23,12 +23,14 @@
 </script>
 
 <div class="w-full">
-    <nav class="mx-auto flex justify-between items-center py-1 px-6 w-full light:bg-gray-100 light:text-black dark:bg-gray-800 dark:text-gray-200">
+    <nav class="mx-auto flex justify-between items-center py-1 px-6 w-full bg-gray-300 bg-primary text-primary-foreground shadow-xl z-10">
         <a href="/" class="font-bold text-xl">PortalEd</a>
         <ul class="nav-menu lg:flex space-x-4">
-            <li><a href="/" class="nav-link hover:text-white hover:font-bold" class:active={activeLink == '/'} on:click={handleLinkClick.bind(null, '/')}>Inicio</a></li>
-            <li><a href="/documents" class="nav-link hover:text-white hover:font-bold" class:active={activeLink == '/documents'} on:click={handleLinkClick.bind(null, '/documents')}>Documentos</a></li>
-            <li><button class="nav-link hover:text-white hover:font-bold" on:click={handleSignOut}>Cerrar Sesion</button></li>
+            <li><a href="/" class={`nav-link hover:text-accent hover:font-bold ${activeLink == '/' ? 'text-accent font-bold' : ''}`} on:click={handleLinkClick.bind(null, '/')}>Inicio</a></li>
+            <li><a href="/documents" class={`nav-link hover:text-accent hover:font-bold ${activeLink == '/documents' ? 'text-accent font-bold' : ''}`} on:click={handleLinkClick.bind(null, '/documents')}>Documentos</a></li>
+            <li><a href="/blog" class={`nav-link hover:text-accent hover:font-bold ${activeLink == '/blog' ? 'text-accent font-bold' : ''}`} on:click={handleLinkClick.bind(null, '/blog')}>Blog</a></li>
+            <li><a href="/campus" class={`nav-link hover:text-accent hover:font-bold ${activeLink == '/campus' ? 'text-accent font-bold' : ''}`} on:click={handleLinkClick.bind(null, '/campus')}>Campus</a></li>
+            <li><button class="nav-link hover:text-accent hover:font-bold" on:click={handleSignOut}>Cerrar Sesion</button></li>
         </ul>
     
         <button type="button" class="nav-toggle lg:hidden focus:outline-none" on:click={toggleMenu}>
@@ -40,7 +42,7 @@
     
     {#if isMenuOpen }
         <ul class="mobile-menu absolute top-8 left-0 w-full shadow-md rounded px-4 py-2 transition transform duration-300 ease-in-out light:bg-gray-100 text-black dark:bg-gray-800 text-gray-200">
-            <li><a href="/" class="nav-link hover:text-white hover:font-bold" class:active={activeLink == '/'} on:click={handleLinkClick.bind(null, '/')}>Inicio</a></li>
+            <li><a href="/" class={`nav-link hover:text-white hover:font-bold ${activeLink == '/' ? 'text-accent font-bold' : ''}`} on:click={handleLinkClick.bind(null, '/')}>Inicio</a></li>
             <li><a href="/documents" class="nav-link hover:text-white hover:font-bold" class:active={activeLink == '/documents'} on:click={handleLinkClick.bind(null, '/documents')}>Documentos</a></li>
             <li><a href="/home3" class="nav-link hover:text-white hover:font-bold {activeLink === '/home3' ? 'text-white font-bold' : ''}" on:click={handleLinkClick.bind(null, "/home3")}>Home3</a></li>
         </ul>
@@ -49,7 +51,7 @@
 
 <style>
     .active {
-        color: #fff;
+        color: var(--accent);
         font-weight: 600;
     }
 

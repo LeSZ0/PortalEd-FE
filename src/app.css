@@ -1,70 +1,95 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
  
 @layer base {
+  html {
+    font-family: 'Roboto';
+  }
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
- 
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
- 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
- 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
- 
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
- 
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
- 
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
- 
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
- 
-    --destructive: 0 72.2% 50.6%;
-    --destructive-foreground: 0 0% 98%;
- 
-    --ring: 0 0% 3.9%;
- 
-    --radius: 0.5rem;
+    --background: 275deg 30% 98%;  /* Principal Background Color (light lavender) */
+    --foreground: 0 0% 5%;     /* Principal Text Color (dark indigo) */
+
+    --muted: 240deg 10% 96.1%;    /* Secondary Color (light gray) */
+    --muted-foreground: 0 0% 30%;   /* Secondary Text Color (medium gray) */
+
+    --popover: 275deg 20% 90%;    /* Popover Background (lighter lavender) */
+    --popover-foreground: 248 88% 10%; /* Popover Text (very dark indigo) */
+
+    --card: 275deg 25% 85%;      /* Card Background (slightly darker lavender) */
+    --card-foreground: 248 88% 15%; /* Card Text (darker indigo) */
+
+    --border: 0 0% 89.8%;          /* Borders/Shadows (light) */
+
+    --input: 0 0% 90%;      /* Input Background (same as Principal Background) */
+    --input-foreground: 248 88% 15%; /* Input Text (darker indigo) */
+
+    --primary: 270deg 70% 50%;     /* Primary Color (teal blue) - adjust for contrast if needed */
+    --primary-foreground: 0 0% 98%; /* Primary Text (white) */
+
+    --secondary: var(--muted);     /* Reference muted for consistency */
+    --secondary-foreground: var(--muted-foreground); /* Reference muted-foreground for consistency */
+
+    --accent: 300deg 70% 70%;       /* Accent Color (light pink) */
+    --accent-foreground: 0 0% 98%; /* Accent Text (white) */
+
+    --destructive: 0 72.2% 50.6%;  /* Not used in this scheme */
+    --destructive-foreground: 0 0% 98%; /* Not used in this scheme */
+
+    --ring: 275deg 10% 70%;        /* Focus ring (subtle lavender) */
+
+    --radius: 0.5rem;             /* Global radius for elements */
+
+    --active: 275deg 20% 90%;  /* Active element background (lighter lavender) */
+    --active-foreground: 248 88% 20%;
+
+    --link-color: 270deg 70% 30%;   /* Link Color (muted teal blue) */
+    --link-hover: 270deg 80% 20%;  /* Link Hover Color (darker teal blue) */
   }
  
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
- 
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
- 
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
- 
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
- 
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
- 
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
- 
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
- 
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
- 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
- 
-    --ring: 0 0% 83.1%;
+  @media (prefers-color-scheme:dark) {
+    :root {
+      --background: 240deg 20% 15%;  /* Principal Background Color (dark blue) */
+      --foreground: 240deg 0% 97%;           /* Principal Text Color (light gray) */
+
+      --muted: 240deg 10% 30%;     /* Secondary Color (dark gray) */
+      --muted-foreground: 0 0% 47%;     /* Secondary Text Color (lighter gray) */
+
+      --popover: 240deg 15% 20%;    /* Popover Background (darker blue) */
+      --popover-foreground: 240deg 0% 97%;   /* Popover Text (light gray) */
+
+      --card: 240deg 18% 25%;      /* Card Background (slightly lighter dark blue) */
+      --card-foreground: 240deg 5% 88%;     /* Card Text (light gray) */
+
+      --border: 0 0% 40%;            /* Borders/Shadows (dark) */
+
+      --input: 240deg 20% 20%;      /* Input Background (darker than Principal Background) */
+      --input-foreground: 240deg 0% 97%;   /* Input Text (light gray) */
+
+      --primary: 270deg 70% 30%;     /* Primary Color (muted teal blue) - adjust for contrast if needed */
+      --primary-foreground: 240deg 0% 97%;   /* Primary Text (light gray) */
+
+      --secondary: var(--muted);     /* Reference muted for consistency */
+      --secondary-foreground: var(--muted-foreground); /* Reference muted-foreground for consistency */
+
+      --accent: 300deg 70% 50%;       /* Accent Color (pink) */
+      --accent-foreground: 240deg 0% 97%;   /* Accent Text (light gray) */
+
+      --destructive: 0 72.2% 50.6%;  /* Not used in this scheme */
+      --destructive-foreground: 240deg 0% 97%; /* Not used in this scheme */
+
+      --ring: 240deg 10% 50%;
+
+      --active: 240deg 25% 20%;  /* Active element background (slightly darker blue) */
+      --active-foreground: 240deg 0% 90%;    /* Active element foreground (lighter gray) */
+
+      --link-color: 270deg 50% 60%;   /* Link Color (muted teal blue) - adjusted for better contrast */
+      --link-hover: 270deg 60% 50%;  /* Link Hover Color (brighter teal blue) */
+    }
   }
 }
  

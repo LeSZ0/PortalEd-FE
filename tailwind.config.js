@@ -3,6 +3,7 @@ import { fontFamily } from "tailwindcss/defaultTheme";
 /** @type {import('tailwindcss').Config} */
 const config = {
 	content: ["./src/**/*.{html,js,svelte,ts}"],
+	darkMode: 'media',
 	theme: {
 		container: {
 			center: true,
@@ -14,7 +15,10 @@ const config = {
 		extend: {
 			colors: {
 				border: "hsl(var(--border) / <alpha-value>)",
-				input: "hsl(var(--input) / <alpha-value>)",
+				input: {
+					DEFAULT: "hsl(var(--input) / <alpha-value>)",
+					foreground: "hsl(var(--input-foreground) / <alpha-value>)"
+				},
 				ring: "hsl(var(--ring) / <alpha-value>)",
 				background: "hsl(var(--background) / <alpha-value>)",
 				foreground: "hsl(var(--foreground) / <alpha-value>)",
@@ -45,6 +49,14 @@ const config = {
 				card: {
 					DEFAULT: "hsl(var(--card) / <alpha-value>)",
 					foreground: "hsl(var(--card-foreground) / <alpha-value>)"
+				},
+				active: {
+					DEFAULT: "hsl(var(--active) / <alpha-value>)",
+					foreground: "hsl(var(--active-foreground) / <alpha-value>)"
+				},
+				link: {
+					DEFAULT: "hsl(var(--link-color) / <alpha-value>)",
+					hover: "hsl(var(--link-hover) / <alpha-value>)"
 				}
 			},
 			borderRadius: {
@@ -52,8 +64,11 @@ const config = {
 				md: "calc(var(--radius) - 2px)",
 				sm: "calc(var(--radius) - 4px)"
 			},
+			borderWidth: {
+				3: "3px"
+			},
 			fontFamily: {
-				sans: [...fontFamily.sans]
+				sans: ["Roboto", ...fontFamily.sans]
 			}
 		}
 	},
